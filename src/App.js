@@ -41,10 +41,37 @@ const reducer = (state, action) => {
 export const DiaryStateContext = createContext();
 export const DiaryDispathContext = createContext();
 
+const dummyData = [{
+  id: 1,
+  emotion: 1,
+  content: '감정일기 1번',
+  date: 1718274915000
+},{
+  id: 1,
+  emotion: 2,
+  content: '감정일기 2번',
+  date: 1718274916000
+},{
+  id: 1,
+  emotion: 3,
+  content: '감정일기 3번',
+  date: 1718274917000
+},{
+  id: 1,
+  emotion: 4,
+  content: '감정일기 4번',
+  date: 1718274918000
+},{
+  id: 1,
+  emotion: 5,
+  content: '감정일기 5번',
+  date: 1718274919000
+}
+]
 
 function App() {
 
-  const [data, dispatch] = useReducer(reducer, [])
+  const [data, dispatch] = useReducer(reducer, dummyData)
 
   const dataId = useRef(0)
   // CREATE
@@ -75,8 +102,8 @@ function App() {
   
 
   return (
-    <DiaryStateContext.Provider>
-      <DiaryDispathContext.Provider>
+    <DiaryStateContext.Provider value={data}>
+      <DiaryDispathContext.Provider value={reducer}>
         <BrowserRouter>
           <div className="App">
             <Routes>
